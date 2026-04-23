@@ -1,10 +1,14 @@
 import Link from "next/link";
+import { UmbraLogo } from "@/components/UmbraLogo";
 
 export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-6">
       {/* Hero */}
       <div className="pt-24 pb-20 text-center">
+        <div className="flex justify-center mb-6">
+          <UmbraLogo size={56} />
+        </div>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-umbra-purple/30 bg-umbra-purple/10 text-umbra-glow text-xs font-mono mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-umbra-glow animate-pulse" />
           On Arc Testnet

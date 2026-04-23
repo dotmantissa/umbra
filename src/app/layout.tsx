@@ -4,9 +4,9 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Umbra — Confidential OTC",
+  title: "Umbra",
   description:
-    "Institutional OTC trading desk with amount privacy on Arc Testnet. Hidden positions, verified settlement, regulatory audit trail.",
+    "Private OTC trading for USDC and EURC on Arc Testnet. Trade in size without showing your position.",
 };
 
 export default function RootLayout({

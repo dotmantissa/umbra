@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ConnectWallet } from "./ConnectWallet";
+import { UmbraLogo } from "./UmbraLogo";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -18,9 +19,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-umbra-purple/20 border border-umbra-purple/50 flex items-center justify-center">
-              <span className="text-umbra-glow text-xs font-bold">U</span>
-            </div>
+            <UmbraLogo size={28} />
             <span className="font-semibold text-white tracking-tight">Umbra</span>
             <span className="text-[10px] text-arc-muted font-mono border border-arc-border rounded px-1">
               testnet
