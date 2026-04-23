@@ -10,11 +10,11 @@ Umbra lets institutions trade in size without showing their position to the mark
 
 ### 1. Post a quote
 
-Connect your wallet and go to the Trading Desk. Click **New Quote** to set your direction (USDC → EURC or EURC → USDC), the amount you want to trade, your firm name, and an optional reference.
+Connect your wallet and go to the Trading Desk. Click **New Quote** to set your direction (USDC to EURC or the other way), the amount you want to trade, your firm name, and an optional reference.
 
-When you post the quote, your amount is sealed — the actual number never appears publicly. Your firm name and reference are encrypted and stored; only someone with your view key can read them.
+When you post, your amount is sealed. The actual number never appears publicly. Your firm name and reference are encrypted and only readable with your view key.
 
-You get a **settlement kit** — save it. It has three things: your view key (share with your auditor), your settlement code (share with your counterparty to settle), and your amount.
+You get a settlement kit. Save it. It has three things: your view key (share with your auditor), your settlement code (share with your counterparty to settle), and your amount.
 
 ### 2. A counterparty takes your quote
 
@@ -24,32 +24,32 @@ Both amounts are now sealed and invisible to anyone else on the network.
 
 ### 3. Exchange settlement details
 
-Once matched, you and your counterparty share your settlement codes and amounts with each other privately — over Signal, email, or wherever you agree.
+Once matched, you and your counterparty share your settlement codes and amounts with each other privately, over Signal, email, or wherever you agree.
 
 ### 4. Settle
 
-Either of you can open the trade and click **Settle Trade**. You enter your settlement code and amount, and the counterparty's. The contract checks both sides match what was agreed, then executes the swap in a single transaction.
-
-If the numbers don't add up, the whole thing reverts. Nothing moves until both sides are correct.
+Either of you can open the trade and click **Settle Trade**. You enter your settlement code and amount, and the counterparty's. The contract checks both sides match what was agreed and executes the swap. If the numbers do not add up, the whole thing reverts. Nothing moves until both sides are correct.
 
 ---
 
 ## Auditor access
 
-Every trade stores encrypted details — firm names, amounts, timestamps — that only a view key can unlock.
+Every trade stores encrypted details: firm names, amounts, timestamps. Only a view key can unlock them.
 
 To give your auditor access:
+
 1. Share the **view key** from your settlement kit with them.
-2. They go to the [Audit panel](https://umbra-ecru.vercel.app/audit), enter the trade ID and view key.
+2. They go to the [Audit panel](https://umbra-ecru.vercel.app/audit), enter the trade ID and the view key.
 3. Everything decrypts locally in their browser. Nothing is sent to a server.
 
 ---
 
 ## Getting started
 
-**Requirements:** A wallet connected to Arc Testnet (chain ID 5042002) with some USDC or EURC. Get test tokens at [faucet.circle.com](https://faucet.circle.com/).
+You need a wallet connected to Arc Testnet (chain ID 5042002) with some USDC or EURC. Get test tokens at [faucet.circle.com](https://faucet.circle.com/).
 
-**Add Arc Testnet to your wallet:**
+Add Arc Testnet to your wallet:
+
 - Network name: Arc Testnet
 - RPC URL: `https://rpc.testnet.arc.network`
 - Chain ID: `5042002`
@@ -74,9 +74,10 @@ The app runs at `http://localhost:3000`.
 
 ## Contracts
 
-The trading contract is deployed on Arc Testnet. A trade moves through four states: open → matched → settled (or cancelled / expired).
+The trading contract is deployed on Arc Testnet. A trade moves through four states: open, matched, settled, and cancelled or expired.
 
 Addresses on Arc Testnet:
+
 - USDC: `0x3600000000000000000000000000000000000000`
 - EURC: `0x89B50855Aa3bE2F677cD6303Cec089B5F319D72a`
 - UmbraOTC: set in `.env.local` as `NEXT_PUBLIC_UMBRA_ADDRESS`

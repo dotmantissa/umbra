@@ -106,12 +106,12 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
       <Modal onClose={onClose}>
         <h2 className="text-lg font-semibold text-white mb-1">Quote posted</h2>
         <p className="text-sm text-arc-muted mb-5">
-          Save these values — you will need them to settle the trade. Share the view key with your auditor.
+          Save these. You will need them to settle the trade. Share the view key with your auditor.
         </p>
 
         <div className="space-y-3 mb-6">
-          <KitField label="View key — share with your auditor" value={kitCopy.viewKey} />
-          <KitField label="Settlement code — keep this private" value={kitCopy.salt} />
+          <KitField label="View key (share with your auditor)" value={kitCopy.viewKey} />
+          <KitField label="Settlement code (keep this private)" value={kitCopy.salt} />
           <KitField label="Your amount" value={formatAmount(BigInt(kitCopy.amount))} />
         </div>
 
@@ -133,7 +133,7 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
     <Modal onClose={onClose}>
       <h2 className="text-lg font-semibold text-white mb-1">New quote</h2>
       <p className="text-sm text-arc-muted mb-5">
-        Your amount stays hidden until both sides settle. Firm name and reference are encrypted — only readable with your view key.
+        Your amount stays hidden until both sides settle. Firm name and reference are encrypted and only readable with your view key.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -228,7 +228,7 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
         {/* Preferred taker (optional) */}
         <div>
           <label className="text-xs text-arc-muted uppercase tracking-wider mb-2 block">
-            Preferred Taker (optional)
+            Specific counterparty (optional)
           </label>
           <input
             type="text"

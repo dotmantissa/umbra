@@ -70,7 +70,7 @@ export default function Home() {
               step: "01",
               title: "Post a quote",
               description:
-                "You set the direction (USDC → EURC or vice versa) and the amount you want to trade. The size never appears publicly — your counterparty learns the details directly from you.",
+                "You set the direction and the amount you want to trade. The size stays private. Your counterparty learns the details from you directly.",
               icon: "◈",
               color: "umbra-purple",
             },
@@ -78,7 +78,7 @@ export default function Home() {
               step: "02",
               title: "Agree terms",
               description:
-                "The other party accepts your quote and locks in their side at the rate you both agreed. At this point neither amount is visible to anyone watching the chain.",
+                "The other party accepts your quote and locks in at the rate you both agreed. Neither amount is visible to anyone else on the network.",
               icon: "⟷",
               color: "matched",
             },
@@ -86,7 +86,7 @@ export default function Home() {
               step: "03",
               title: "Settle",
               description:
-                "Either party triggers settlement. The contract verifies both sides match the agreed terms and executes the swap in a single transaction. Done — no custody risk, no partial fills.",
+                "Either party triggers settlement. Both sides are verified and the swap executes. No custody risk, no partial fills.",
               icon: "✓",
               color: "settled",
             },
@@ -126,12 +126,12 @@ export default function Home() {
             {
               title: "Hidden trade sizes",
               description:
-                "Amounts are sealed before any public record exists and only revealed at the moment of settlement, when both parties are already committed. Nobody can front-run what they cannot see.",
+                "Amounts are sealed before any public record exists. They only become visible once both parties are locked in. You cannot front-run a number you cannot see.",
             },
             {
               title: "Auditor access",
               description:
-                "Trade details are encrypted and stored on the blockchain. Share a view key with your compliance team or regulator and they can read the full record — amounts, firm names, timestamps.",
+                "Trade details are encrypted and stored on the blockchain. Share a view key with your compliance team or regulator and they can read everything: amounts, firm names, timestamps.",
             },
             {
               title: "Native FX on Arc",
@@ -141,17 +141,17 @@ export default function Home() {
             {
               title: "One-transaction settlement",
               description:
-                "Both legs swap in a single transaction. If anything doesn't match, the whole thing reverts. You either get exactly what you agreed to, or nothing moves.",
+                "Both sides settle together. If anything does not add up, the whole thing reverts. You get exactly what you agreed to, or nothing moves.",
             },
             {
               title: "Open market or private",
               description:
-                "Post a quote to the open desk for anyone to pick up, or target a specific wallet address for a bilateral deal. Either way, the size stays private until settlement.",
+                "Post a quote for anyone to take, or send it directly to a specific wallet address. The size stays private until settlement either way.",
             },
             {
               title: "Permanent record",
               description:
-                "Every trade — the sealed amounts, the settlement, the timestamps — is recorded on Arc permanently. Give an auditor the view key at any point and they can reconstruct the full picture.",
+                "Every trade is recorded on Arc permanently: the sealed amounts, the settlement, the timestamps. Share the view key with an auditor whenever you need and they can read everything.",
             },
           ].map(({ title, description }) => (
             <div
@@ -198,7 +198,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-arc-border py-8 flex items-center justify-between text-xs text-arc-muted">
-        <div>Umbra — OTC on Arc Testnet</div>
+        <div>Umbra · OTC on Arc Testnet</div>
         <div>
           <a
             href="https://testnet.arcscan.app"

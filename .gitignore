@@ -22,3 +22,4 @@ contracts/lib/forge-std/
 # Misc
 .DS_Store
 *.log
+.vercel

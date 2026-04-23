@@ -10,9 +10,9 @@ export default function AuditPage() {
         </div>
         <h1 className="text-2xl font-semibold text-white mb-2">Audit Panel</h1>
         <p className="text-sm text-arc-muted leading-relaxed">
-          Trade amounts and firm details are encrypted. To read them,
-          you need a view key — a short code the trading parties share with their auditor.
-          Everything decrypts locally in your browser; nothing is sent to a server.
+          Trade amounts and firm details are encrypted. To read them you need a view key,
+          a short code the trading parties share with their auditor.
+          Everything decrypts locally in your browser. Nothing is sent to a server.
         </p>
       </div>
 
@@ -23,7 +23,7 @@ export default function AuditPage() {
             <span className="text-umbra-glow font-mono shrink-0">1.</span>
             <span>
               When a quote is created, a unique view key is generated. A reference to it
-              is recorded on the blockchain — the key itself stays with the trading parties.
+              is recorded on the blockchain. The key itself stays with the trading parties.
             </span>
           </li>
           <li className="flex gap-2.5">
@@ -36,8 +36,8 @@ export default function AuditPage() {
           <li className="flex gap-2.5">
             <span className="text-umbra-glow font-mono shrink-0">3.</span>
             <span>
-              The trading parties share the view key with you out of band. Paste it here
-              and the panel verifies the key matches the trade on record, then decrypts the details.
+              The trading parties share the view key with you directly. Paste it here
+              and the panel checks it matches this trade, then reveals the details.
             </span>
           </li>
         </ol>

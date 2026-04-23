@@ -110,12 +110,12 @@ export function MatchRFQModal({ trade, onClose, onSuccess }: Props) {
         </p>
 
         <div className="space-y-3 mb-6">
-          <KitField label="Settlement code — share this with the maker" value={kitCopy.salt} />
+          <KitField label="Settlement code (share this with the maker)" value={kitCopy.salt} />
           <KitField label="Your amount" value={formatAmount(BigInt(kitCopy.amount))} />
         </div>
 
         <div className="p-3 rounded-lg bg-matched/10 border border-matched/30 text-sm text-matched mb-5">
-          Exchange your settlement code and amount with the maker. Either of you can then trigger settlement.
+          Share your settlement code and amount with the maker. Either of you can then settle the trade.
         </div>
 
         <button

@@ -93,7 +93,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
           </div>
           <h2 className="text-lg font-semibold text-white mb-2">Trade Settled</h2>
           <p className="text-sm text-arc-muted mb-6">
-            Done. Both sides have been transferred in a single transaction. The amounts are now visible on the trade.
+            Both sides transferred. The amounts are now visible on the trade.
           </p>
           <button
             onClick={onClose}
@@ -121,7 +121,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
         {/* My side */}
         <div>
           <div className="text-xs text-umbra-glow uppercase tracking-wider mb-3">
-            {isMaker ? "Maker (you)" : "Taker (you)"} — sends {isMaker ? makerTokenLabel(trade.pair) : takerTokenLabel(trade.pair)}
+            {isMaker ? "You (maker)" : "You (taker)"} · sending {isMaker ? makerTokenLabel(trade.pair) : takerTokenLabel(trade.pair)}
           </div>
           <div className="space-y-3">
             <div>
@@ -152,7 +152,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
         {/* Counterparty side */}
         <div>
           <div className="text-xs text-arc-muted uppercase tracking-wider mb-3">
-            {isMaker ? "Taker (counterparty)" : "Maker (counterparty)"} — sends{" "}
+            {isMaker ? "Counterparty (taker)" : "Counterparty (maker)"} · sending{" "}
             {isMaker ? takerTokenLabel(trade.pair) : makerTokenLabel(trade.pair)}
           </div>
           <div className="space-y-3">

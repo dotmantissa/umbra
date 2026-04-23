@@ -40,7 +40,7 @@ export function AuditDecoder() {
       setDecrypted(results);
     } catch {
       setDecryptError(
-        "Decryption failed. The view key may be incorrect or the encrypted data is corrupted."
+        "Could not decrypt. Check that the view key is correct for this trade and try again."
       );
     } finally {
       setIsDecrypting(false);
@@ -105,7 +105,7 @@ export function AuditDecoder() {
             disabled={!trade || !viewKey || !isValidKey || isDecrypting}
             className="w-full py-2.5 rounded-lg bg-umbra-purple hover:bg-umbra-violet disabled:opacity-40 disabled:cursor-not-allowed transition-colors text-white font-medium text-sm"
           >
-            {isDecrypting ? "Decrypting…" : "Decrypt Trade Details"}
+            {isDecrypting ? "Decrypting…" : "Reveal trade details"}
           </button>
         </div>
       </div>
@@ -137,12 +137,12 @@ export function AuditDecoder() {
             {trade.status === 2 && (
               <>
                 <Field
-                  label="Maker Amount (settled)"
+                  label="Maker amount"
                   value={formatAmount(trade.makerAmount)}
                   highlight
                 />
                 <Field
-                  label="Taker Amount (settled)"
+                  label="Taker amount"
                   value={formatAmount(trade.takerAmount)}
                   highlight
                 />
@@ -180,13 +180,13 @@ export function AuditDecoder() {
         <div className="rounded-xl border border-settled/30 bg-settled/5 p-6 animate-fade-in">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-2 h-2 rounded-full bg-settled" />
-            <h3 className="text-sm font-medium text-settled">Decrypted Trade Details</h3>
+            <h3 className="text-sm font-medium text-settled">Trade details</h3>
           </div>
 
           <div className="space-y-4">
             {decrypted.maker && (
               <div>
-                <div className="text-xs text-umbra-glow uppercase tracking-wider mb-2">Maker Details</div>
+                <div className="text-xs text-umbra-glow uppercase tracking-wider mb-2">Maker</div>
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="Institution" value={decrypted.maker.institution} />
                   <Field label="Currency" value={decrypted.maker.currency} />
@@ -198,7 +198,7 @@ export function AuditDecoder() {
             )}
             {decrypted.taker && (
               <div>
-                <div className="text-xs text-umbra-glow uppercase tracking-wider mb-2">Taker Details</div>
+                <div className="text-xs text-umbra-glow uppercase tracking-wider mb-2">Taker</div>
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="Institution" value={decrypted.taker.institution} />
                   <Field label="Currency" value={decrypted.taker.currency} />
