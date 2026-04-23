@@ -53,8 +53,7 @@ export function AuditDecoder() {
       <div className="rounded-xl border border-arc-border bg-arc-card p-6">
         <h2 className="text-sm font-medium text-white mb-1">Audit Access</h2>
         <p className="text-xs text-arc-muted mb-5">
-          Enter a trade ID and the view key provided by the trading parties.
-          The contract verifies the key matches the stored hash before decryption.
+          Enter a trade ID and the view key the trading parties shared with you. The details decrypt locally in your browser.
         </p>
 
         <div className="space-y-4">
@@ -95,7 +94,7 @@ export function AuditDecoder() {
                   className={`w-1.5 h-1.5 rounded-full ${isValidKey ? "bg-settled" : "bg-danger"}`}
                 />
                 <span className={`text-xs ${isValidKey ? "text-settled" : "text-danger"}`}>
-                  {isValidKey ? "View key verified onchain" : "View key does not match stored hash"}
+                  {isValidKey ? "View key verified" : "View key doesn't match this trade"}
                 </span>
               </div>
             )}
@@ -151,10 +150,10 @@ export function AuditDecoder() {
             )}
           </div>
 
-          {/* Commitment hashes */}
+          {/* Commitment fingerprints */}
           <div className="mt-4 p-3 rounded-lg bg-arc-dark border border-arc-border/50">
             <div className="text-[10px] text-arc-muted uppercase tracking-wider mb-2">
-              Cryptographic Commitments
+              Onchain record
             </div>
             <div className="space-y-1">
               <div className="font-mono text-[10px] text-arc-muted break-all">
@@ -191,7 +190,7 @@ export function AuditDecoder() {
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="Institution" value={decrypted.maker.institution} />
                   <Field label="Currency" value={decrypted.maker.currency} />
-                  <Field label="Amount (raw)" value={decrypted.maker.amount} mono />
+                  <Field label="Amount" value={formatAmount(BigInt(decrypted.maker.amount))} mono />
                   <Field label="Reference" value={decrypted.maker.ref} />
                   <Field label="Timestamp" value={formatTimestamp(decrypted.maker.ts)} />
                 </div>
@@ -203,7 +202,7 @@ export function AuditDecoder() {
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="Institution" value={decrypted.taker.institution} />
                   <Field label="Currency" value={decrypted.taker.currency} />
-                  <Field label="Amount (raw)" value={decrypted.taker.amount} mono />
+                  <Field label="Amount" value={formatAmount(BigInt(decrypted.taker.amount))} mono />
                   <Field label="Reference" value={decrypted.taker.ref} />
                   <Field label="Timestamp" value={formatTimestamp(decrypted.taker.ts)} />
                 </div>

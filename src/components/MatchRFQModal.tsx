@@ -10,7 +10,7 @@ import {
   encryptDetails,
   saveKit,
 } from "@/lib/crypto";
-import { parseAmount, pairLabel, takerTokenLabel } from "@/lib/utils";
+import { parseAmount, formatAmount, pairLabel, takerTokenLabel } from "@/lib/utils";
 import { useMatchRFQ, useApproveToken, useTokenAllowance } from "@/hooks/useUmbraOTC";
 import { USDC_ADDRESS, EURC_ADDRESS } from "@/lib/contracts";
 
@@ -104,19 +104,18 @@ export function MatchRFQModal({ trade, onClose, onSuccess }: Props) {
   if (step === "done" && kitCopy) {
     return (
       <Modal onClose={onClose}>
-        <h2 className="text-lg font-semibold text-white mb-1">RFQ Matched</h2>
+        <h2 className="text-lg font-semibold text-white mb-1">Quote matched</h2>
         <p className="text-sm text-arc-muted mb-5">
-          Share your settlement values with the maker (via Signal/secure channel).
-          You will both need these to settle the trade.
+          Share these with the other party. You will both need them to complete the trade.
         </p>
 
         <div className="space-y-3 mb-6">
-          <KitField label="Your Salt (share with maker for settlement)" value={kitCopy.salt} />
-          <KitField label="Your Amount (raw, 6 dec)" value={kitCopy.amount} />
+          <KitField label="Settlement code — share this with the maker" value={kitCopy.salt} />
+          <KitField label="Your amount" value={formatAmount(BigInt(kitCopy.amount))} />
         </div>
 
         <div className="p-3 rounded-lg bg-matched/10 border border-matched/30 text-sm text-matched mb-5">
-          Now exchange your salt + amount with the maker, then either party can call Settle.
+          Exchange your settlement code and amount with the maker. Either of you can then trigger settlement.
         </div>
 
         <button
@@ -131,13 +130,12 @@ export function MatchRFQModal({ trade, onClose, onSuccess }: Props) {
 
   return (
     <Modal onClose={onClose}>
-      <h2 className="text-lg font-semibold text-white mb-1">Match RFQ</h2>
+      <h2 className="text-lg font-semibold text-white mb-1">Take quote</h2>
       <div className="text-xs text-arc-muted font-mono mb-1">
         Trade #{trade.id.toString()} · {pairLabel(trade.pair)}
       </div>
       <p className="text-sm text-arc-muted mb-5">
-        Enter the amount you will send ({sendSymbol}). This is committed via
-        cryptographic hash — no amount is revealed onchain until settlement.
+        Enter the amount you will send ({sendSymbol}). The size stays hidden until both sides settle.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -154,13 +152,13 @@ export function MatchRFQModal({ trade, onClose, onSuccess }: Props) {
             className="w-full bg-arc-dark border border-arc-border rounded-lg px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-umbra-purple"
           />
           <p className="text-[11px] text-arc-muted mt-1">
-            This should reflect the rate you agreed with the maker offchain.
+            This should match the rate you agreed with the maker.
           </p>
         </div>
 
         <div>
           <label className="text-xs text-arc-muted uppercase tracking-wider mb-2 block">
-            Your Institution (encrypted)
+            Your firm name
           </label>
           <input
             type="text"
@@ -186,10 +184,10 @@ export function MatchRFQModal({ trade, onClose, onSuccess }: Props) {
           {step === "approving"
             ? "Approving… (confirm in wallet)"
             : step === "matching" || isConfirming
-            ? "Matching… (confirm in wallet)"
+            ? "Taking quote… (confirm in wallet)"
             : needsApproval
-            ? `Approve ${sendSymbol} & Match`
-            : "Match RFQ"}
+            ? `Approve ${sendSymbol} & Take`
+            : "Take Quote"}
         </button>
       </form>
     </Modal>

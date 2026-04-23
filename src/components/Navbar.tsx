@@ -45,7 +45,17 @@ export function Navbar() {
           </div>
         </div>
 
-        <ConnectWallet />
+        <div className="flex items-center gap-3">
+          <a
+            href="https://faucet.circle.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1.5 rounded-md text-sm text-arc-muted hover:text-white hover:bg-arc-border/50 transition-colors"
+          >
+            Faucet
+          </a>
+          <ConnectWallet />
+        </div>
       </div>
     </nav>
   );

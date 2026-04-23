@@ -168,11 +168,10 @@ export function RFQCard({ trade, onMatch, onSettle, onCancel }: Props) {
         </div>
       </div>
 
-      {/* Commitment hashes — visible to all, proves integrity */}
       {(isMatched || isSettled) && (
         <div className="mb-4 p-2 rounded bg-arc-dark border border-arc-border/30">
           <div className="text-[10px] text-arc-muted mb-1 uppercase tracking-wider">
-            Onchain Commitments
+            Trade fingerprints
           </div>
           <div className="font-mono text-[10px] text-arc-muted truncate">
             M: {trade.makerCommitment.slice(0, 20)}…

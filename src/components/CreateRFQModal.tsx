@@ -10,7 +10,7 @@ import {
   encryptDetails,
   saveKit,
 } from "@/lib/crypto";
-import { parseAmount } from "@/lib/utils";
+import { parseAmount, formatAmount } from "@/lib/utils";
 import { useCreateRFQ, useApproveToken, useTokenAllowance } from "@/hooks/useUmbraOTC";
 import { USDC_ADDRESS, EURC_ADDRESS } from "@/lib/contracts";
 
@@ -104,20 +104,19 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
   if (step === "done" && kitCopy) {
     return (
       <Modal onClose={onClose}>
-        <h2 className="text-lg font-semibold text-white mb-1">RFQ Created</h2>
+        <h2 className="text-lg font-semibold text-white mb-1">Quote posted</h2>
         <p className="text-sm text-arc-muted mb-5">
-          Save your settlement kit. You will need these values to settle the trade.
-          Share your view key with the counterparty or your auditor securely.
+          Save these values — you will need them to settle the trade. Share the view key with your auditor.
         </p>
 
         <div className="space-y-3 mb-6">
-          <KitField label="View Key (share with auditor)" value={kitCopy.viewKey} />
-          <KitField label="Your Salt (keep private)" value={kitCopy.salt} />
-          <KitField label="Your Amount (raw, 6 dec)" value={kitCopy.amount} />
+          <KitField label="View key — share with your auditor" value={kitCopy.viewKey} />
+          <KitField label="Settlement code — keep this private" value={kitCopy.salt} />
+          <KitField label="Your amount" value={formatAmount(BigInt(kitCopy.amount))} />
         </div>
 
         <div className="p-3 rounded-lg bg-matched/10 border border-matched/30 text-sm text-matched mb-5">
-          Next: Wait for a taker to match your RFQ, then exchange salts offchain and settle.
+          Wait for someone to take your quote. Once matched, share your settlement code and amount with them to complete the trade.
         </div>
 
         <button
@@ -132,10 +131,9 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
 
   return (
     <Modal onClose={onClose}>
-      <h2 className="text-lg font-semibold text-white mb-1">New RFQ</h2>
+      <h2 className="text-lg font-semibold text-white mb-1">New quote</h2>
       <p className="text-sm text-arc-muted mb-5">
-        Amount stays confidential until settlement. Your institution name and reference
-        are AES-GCM encrypted and only readable with your view key.
+        Your amount stays hidden until both sides settle. Firm name and reference are encrypted — only readable with your view key.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -198,7 +196,7 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
         {/* Institution */}
         <div>
           <label className="text-xs text-arc-muted uppercase tracking-wider mb-2 block">
-            Institution (encrypted)
+            Your firm name
           </label>
           <input
             type="text"
@@ -256,10 +254,10 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
           {step === "approving"
             ? "Approving spend… (confirm in wallet)"
             : step === "creating" || isConfirming
-            ? "Creating RFQ… (confirm in wallet)"
+            ? "Posting quote… (confirm in wallet)"
             : needsApproval
-            ? "Approve & Create RFQ"
-            : "Create RFQ"}
+            ? "Approve & Post Quote"
+            : "Post Quote"}
         </button>
       </form>
     </Modal>

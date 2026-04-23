@@ -93,8 +93,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
           </div>
           <h2 className="text-lg font-semibold text-white mb-2">Trade Settled</h2>
           <p className="text-sm text-arc-muted mb-6">
-            Atomic FX swap executed. Both tokens have been transferred. Amounts are now
-            publicly visible on the trade card.
+            Done. Both sides have been transferred in a single transaction. The amounts are now visible on the trade.
           </p>
           <button
             onClick={onClose}
@@ -115,8 +114,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
       </div>
 
       <div className="p-3 rounded-lg bg-arc-dark border border-arc-border/50 mb-5 text-sm text-arc-muted">
-        Both parties have exchanged amounts + salts offchain (via Signal/secure channel).
-        Enter both sides to validate commitments and execute the atomic swap.
+        Share your settlement code and amount with your counterparty, then enter both sides here to complete the trade.
       </div>
 
       <form onSubmit={handleSettle} className="space-y-5">
@@ -138,7 +136,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
               />
             </div>
             <div>
-              <label className="text-xs text-arc-muted mb-1 block">Your Salt (from your settlement kit)</label>
+              <label className="text-xs text-arc-muted mb-1 block">Your settlement code</label>
               <input
                 type="text"
                 placeholder="0x..."
@@ -159,7 +157,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
           </div>
           <div className="space-y-3">
             <div>
-              <label className="text-xs text-arc-muted mb-1 block">Their Amount (received offchain)</label>
+              <label className="text-xs text-arc-muted mb-1 block">Their amount</label>
               <input
                 type="text"
                 placeholder="920000.00"
@@ -170,7 +168,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
               />
             </div>
             <div>
-              <label className="text-xs text-arc-muted mb-1 block">Their Salt (received offchain)</label>
+              <label className="text-xs text-arc-muted mb-1 block">Their settlement code</label>
               <input
                 type="text"
                 placeholder="0x..."
@@ -200,7 +198,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
             ? "Settling… (confirm in wallet)"
             : needsApproval
             ? "Approve & Settle"
-            : "Verify Commitments & Execute Swap"}
+            : "Confirm & Settle"}
         </button>
       </form>
     </Modal>

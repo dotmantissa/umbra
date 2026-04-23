@@ -7,22 +7,21 @@ export default function Home() {
       <div className="pt-24 pb-20 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-umbra-purple/30 bg-umbra-purple/10 text-umbra-glow text-xs font-mono mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-umbra-glow animate-pulse" />
-          Arc Testnet · TEE-backed Confidential Transfers
+          On Arc Testnet
         </div>
 
         <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6 leading-tight">
-          Trade in the Shadow.
+          OTC trading where your
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-umbra-glow to-umbra-indigo">
-            Settle Onchain.
+            book stays private.
           </span>
         </h1>
 
-        <p className="text-lg text-arc-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-          Umbra is an institutional OTC desk where trade sizes and counterparty
-          balances are hidden using Arc&apos;s opt-in confidential transfers.
-          Negotiate offchain via RFQ. Settle onchain with amount privacy intact.
-          Auditors get view keys.
+        <p className="text-lg text-arc-muted max-w-xl mx-auto mb-10 leading-relaxed">
+          Umbra lets institutions trade USDC and EURC in size without
+          exposing amounts onchain. Agree on terms privately, settle
+          on Arc, give your auditor a key.
         </p>
 
         <div className="flex items-center justify-center gap-4">
@@ -41,17 +40,16 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Problem statement */}
+      {/* Problem */}
       <div className="mb-20">
         <div className="rounded-2xl border border-danger/20 bg-danger/5 p-8 text-center">
           <h2 className="text-xl font-semibold text-white mb-3">
-            The Problem With Public Chains
+            Public chains have a position problem
           </h2>
           <p className="text-arc-muted max-w-2xl mx-auto">
-            When a hedge fund places a $50M USDC → EURC order on a public chain, every
-            market participant sees the position before settlement. This causes front-running,
-            price impact leakage, and counterparty information asymmetry — the exact reasons
-            institutions avoid settling on-chain.
+            The moment you put a large USDC order onchain, every trader in the market
+            sees it. That information moves prices before your trade settles. Umbra keeps
+            the size hidden until both sides are already locked in.
           </p>
         </div>
       </div>
@@ -59,32 +57,32 @@ export default function Home() {
       {/* How it works */}
       <div className="mb-20">
         <h2 className="text-2xl font-semibold text-white text-center mb-12">
-          How Umbra Works
+          How a trade works
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
           {[
             {
               step: "01",
-              title: "Request for Quote",
+              title: "Post a quote",
               description:
-                "Institution A creates an RFQ with a cryptographic commitment to their amount. No cleartext amount appears onchain — just a keccak256 hash. Encrypted trade details are stored for auditor access.",
+                "You set the direction (USDC → EURC or vice versa) and the amount you want to trade. The size never appears onchain — only a fingerprint of it does. Your counterparty learns the size privately, offchain.",
               icon: "◈",
               color: "umbra-purple",
             },
             {
               step: "02",
-              title: "Offchain Negotiation",
+              title: "Agree offchain",
               description:
-                "Institutions negotiate the rate via secure channel (Signal, Bloomberg). Institution B commits to their counter-amount via the same commitment scheme. Trade is now matched — still no amounts visible.",
+                "The other party accepts your quote and locks in their side at the rate you both agreed. At this point neither amount is visible to anyone watching the chain.",
               icon: "⟷",
               color: "matched",
             },
             {
               step: "03",
-              title: "Atomic Settlement",
+              title: "Settle onchain",
               description:
-                "Either party reveals both amounts and salts. The contract validates commitments and executes the atomic FX swap in one transaction. Amounts are now public — but the trade is already complete.",
+                "Either party triggers settlement. The contract verifies both sides match the agreed terms and executes the swap in a single transaction. Done — no custody risk, no partial fills.",
               icon: "✓",
               color: "settled",
             },
@@ -117,39 +115,39 @@ export default function Home() {
       {/* Features */}
       <div className="mb-20">
         <h2 className="text-2xl font-semibold text-white text-center mb-12">
-          Built for Institutions
+          Built for serious traders
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
           {[
             {
-              title: "Amount Privacy via Commitments",
+              title: "Hidden trade sizes",
               description:
-                "Trade sizes are committed via keccak256(amount ‖ salt) before any onchain action. Only settlement reveals amounts — simulating Arc's TEE confidential transfer layer.",
+                "Amounts are sealed before any onchain action and only revealed at the moment of settlement, when both parties are already committed. Nobody can front-run what they cannot see.",
             },
             {
-              title: "Auditor View Keys",
+              title: "Auditor access",
               description:
-                "AES-GCM encrypted trade details (institution, amount, reference) are stored onchain. Auditors receive the view key offchain and can verify it against the stored hash.",
+                "Trade details are encrypted and stored onchain. Share a view key with your compliance team or regulator and they can read the full record — amounts, firm names, timestamps.",
             },
             {
-              title: "USDC ↔ EURC FX on Arc",
+              title: "Native FX on Arc",
               description:
-                "Native USDC and EURC settlement on Arc Testnet. ~350ms finality. Gas paid in USDC. No ETH price volatility in transaction costs.",
+                "USDC and EURC settle directly on Arc Testnet. Finality in under a second. Gas is paid in USDC so there are no ETH swings eating into your spread.",
             },
             {
-              title: "Atomic Swap Settlement",
+              title: "One-transaction settlement",
               description:
-                "A single settlement transaction validates both commitments and executes the token swap atomically. No partial fills. No custodial risk during settlement.",
+                "Both legs swap in a single transaction. If anything doesn't match, the whole thing reverts. You either get exactly what you agreed to, or nothing moves.",
             },
             {
-              title: "Bilateral or Open Market",
+              title: "Open market or private",
               description:
-                "Set a preferred counterparty for private bilateral trades, or post to the open market. Takers see the pair and reference but not the amount.",
+                "Post a quote to the open desk for anyone to pick up, or target a specific wallet address for a bilateral deal. Either way, the size stays private until settlement.",
             },
             {
-              title: "Full Audit Trail",
+              title: "Permanent record",
               description:
-                "All commitment hashes, encrypted metadata, and settlement results are permanently stored onchain. Regulators can reconstruct any trade with the view key.",
+                "Every trade — the sealed amounts, the settlement, the timestamps — lives on Arc forever. Give an auditor the view key at any point and they can reconstruct the full picture.",
             },
           ].map(({ title, description }) => (
             <div
@@ -171,31 +169,49 @@ export default function Home() {
       {/* CTA */}
       <div className="mb-20 rounded-2xl border border-umbra-purple/20 bg-umbra-purple/5 p-10 text-center">
         <h2 className="text-2xl font-semibold text-white mb-3">
-          Ready to trade in confidence?
+          Ready to trade?
         </h2>
         <p className="text-arc-muted mb-6">
-          Connect your wallet on Arc Testnet and create your first confidential RFQ.
+          Connect your wallet on Arc Testnet, grab some USDC from the faucet, and post your first quote.
         </p>
-        <Link
-          href="/desk"
-          className="inline-flex px-8 py-3 rounded-xl bg-umbra-purple hover:bg-umbra-violet transition-colors text-white font-medium"
-        >
-          Open Trading Desk
-        </Link>
+        <div className="flex items-center justify-center gap-3">
+          <Link
+            href="/desk"
+            className="inline-flex px-8 py-3 rounded-xl bg-umbra-purple hover:bg-umbra-violet transition-colors text-white font-medium"
+          >
+            Open Trading Desk
+          </Link>
+          <a
+            href="https://faucet.circle.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex px-6 py-3 rounded-xl border border-arc-border hover:border-arc-border/80 text-arc-muted hover:text-white transition-colors text-sm"
+          >
+            Get test tokens
+          </a>
+        </div>
       </div>
 
       {/* Footer */}
       <footer className="border-t border-arc-border py-8 flex items-center justify-between text-xs text-arc-muted">
-        <div>Umbra · Confidential OTC on Arc Testnet</div>
+        <div>Umbra — OTC on Arc Testnet</div>
         <div>
-          Built on{" "}
           <a
             href="https://testnet.arcscan.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-umbra-glow hover:underline"
+            className="hover:text-white transition-colors"
           >
-            Arc
+            Explorer
+          </a>
+          <span className="mx-2">·</span>
+          <a
+            href="https://github.com/dotmantissa/umbra"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            GitHub
           </a>
         </div>
       </footer>

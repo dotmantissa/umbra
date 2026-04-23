@@ -44,7 +44,7 @@ export default function DeskPage() {
         <div>
           <h1 className="text-2xl font-semibold text-white mb-1">Trading Desk</h1>
           <p className="text-sm text-arc-muted">
-            Confidential OTC RFQ market · All amounts hidden until settlement
+            Private FX · Amounts hidden until settlement
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function DeskPage() {
             onClick={() => setShowCreate(true)}
             className="px-5 py-2.5 rounded-xl bg-umbra-purple hover:bg-umbra-violet transition-colors text-white text-sm font-medium"
           >
-            + New RFQ
+            + New Quote
           </button>
         )}
       </div>
@@ -218,7 +218,7 @@ function MarketTab({
         <div className="text-4xl mb-4 text-arc-muted/30">◈</div>
         <div className="text-arc-muted text-sm mb-2">No open RFQs</div>
         <div className="text-xs text-arc-muted/60">
-          Create the first confidential RFQ to get started
+          Post the first quote to get started
         </div>
       </div>
     );
