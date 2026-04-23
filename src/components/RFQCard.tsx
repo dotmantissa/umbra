@@ -171,7 +171,7 @@ export function RFQCard({ trade, onMatch, onSettle, onCancel }: Props) {
       {(isMatched || isSettled) && (
         <div className="mb-4 p-2 rounded bg-arc-dark border border-arc-border/30">
           <div className="text-[10px] text-arc-muted mb-1 uppercase tracking-wider">
-            Trade fingerprints
+            Trade record
           </div>
           <div className="font-mono text-[10px] text-arc-muted truncate">
             M: {trade.makerCommitment.slice(0, 20)}…
@@ -189,7 +189,7 @@ export function RFQCard({ trade, onMatch, onSettle, onCancel }: Props) {
             onClick={onMatch}
             className="flex-1 py-2 rounded-lg bg-umbra-purple hover:bg-umbra-violet transition-colors text-sm font-medium text-white"
           >
-            Match RFQ
+            Take Quote
           </button>
         )}
         {isMatched && isParty && onSettle && (

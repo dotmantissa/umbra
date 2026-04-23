@@ -28,7 +28,7 @@ export function SettleModal({ trade, onClose, onSuccess }: Props) {
   const [myAmountStr, setMyAmountStr] = useState("");
   const [mySalt, setMySalt] = useState("");
 
-  // Counterparty side (entered from offchain exchange)
+  // Counterparty side (received from the other party)
   const [cpAmountStr, setCpAmountStr] = useState("");
   const [cpSalt, setCpSalt] = useState("");
 

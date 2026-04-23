@@ -216,7 +216,7 @@ function MarketTab({
     return (
       <div className="text-center py-20">
         <div className="text-4xl mb-4 text-arc-muted/30">◈</div>
-        <div className="text-arc-muted text-sm mb-2">No open RFQs</div>
+        <div className="text-arc-muted text-sm mb-2">No open quotes</div>
         <div className="text-xs text-arc-muted/60">
           Post the first quote to get started
         </div>

@@ -20,7 +20,7 @@ export default function Home() {
 
         <p className="text-lg text-arc-muted max-w-xl mx-auto mb-10 leading-relaxed">
           Umbra lets institutions trade USDC and EURC in size without
-          exposing amounts onchain. Agree on terms privately, settle
+          exposing amounts publicly. Agree on terms privately, settle
           on Arc, give your auditor a key.
         </p>
 
@@ -47,7 +47,7 @@ export default function Home() {
             Public chains have a position problem
           </h2>
           <p className="text-arc-muted max-w-2xl mx-auto">
-            The moment you put a large USDC order onchain, every trader in the market
+            The moment you put a large USDC order on the blockchain, every trader in the market
             sees it. That information moves prices before your trade settles. Umbra keeps
             the size hidden until both sides are already locked in.
           </p>
@@ -66,13 +66,13 @@ export default function Home() {
               step: "01",
               title: "Post a quote",
               description:
-                "You set the direction (USDC → EURC or vice versa) and the amount you want to trade. The size never appears onchain — only a fingerprint of it does. Your counterparty learns the size privately, offchain.",
+                "You set the direction (USDC → EURC or vice versa) and the amount you want to trade. The size never appears publicly — your counterparty learns the details directly from you.",
               icon: "◈",
               color: "umbra-purple",
             },
             {
               step: "02",
-              title: "Agree offchain",
+              title: "Agree terms",
               description:
                 "The other party accepts your quote and locks in their side at the rate you both agreed. At this point neither amount is visible to anyone watching the chain.",
               icon: "⟷",
@@ -80,7 +80,7 @@ export default function Home() {
             },
             {
               step: "03",
-              title: "Settle onchain",
+              title: "Settle",
               description:
                 "Either party triggers settlement. The contract verifies both sides match the agreed terms and executes the swap in a single transaction. Done — no custody risk, no partial fills.",
               icon: "✓",
@@ -122,12 +122,12 @@ export default function Home() {
             {
               title: "Hidden trade sizes",
               description:
-                "Amounts are sealed before any onchain action and only revealed at the moment of settlement, when both parties are already committed. Nobody can front-run what they cannot see.",
+                "Amounts are sealed before any public record exists and only revealed at the moment of settlement, when both parties are already committed. Nobody can front-run what they cannot see.",
             },
             {
               title: "Auditor access",
               description:
-                "Trade details are encrypted and stored onchain. Share a view key with your compliance team or regulator and they can read the full record — amounts, firm names, timestamps.",
+                "Trade details are encrypted and stored on the blockchain. Share a view key with your compliance team or regulator and they can read the full record — amounts, firm names, timestamps.",
             },
             {
               title: "Native FX on Arc",
@@ -147,7 +147,7 @@ export default function Home() {
             {
               title: "Permanent record",
               description:
-                "Every trade — the sealed amounts, the settlement, the timestamps — lives on Arc forever. Give an auditor the view key at any point and they can reconstruct the full picture.",
+                "Every trade — the sealed amounts, the settlement, the timestamps — is recorded on Arc permanently. Give an auditor the view key at any point and they can reconstruct the full picture.",
             },
           ].map(({ title, description }) => (
             <div

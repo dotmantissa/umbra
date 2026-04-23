@@ -178,14 +178,13 @@ export function CreateRFQModal({ onClose, onSuccess }: Props) {
           />
         </div>
 
-        {/* RFQ Ref */}
         <div>
           <label className="text-xs text-arc-muted uppercase tracking-wider mb-2 block">
-            RFQ Reference
+            Trade reference
           </label>
           <input
             type="text"
-            placeholder="RFQ-2024-001"
+            placeholder="TRADE-001"
             value={rfqRef}
             onChange={(e) => setRfqRef(e.target.value)}
             required

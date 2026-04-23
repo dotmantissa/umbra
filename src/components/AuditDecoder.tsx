@@ -129,7 +129,7 @@ export function AuditDecoder() {
 
           <div className="grid grid-cols-2 gap-4 text-sm">
             <Field label="Pair" value={pairLabel(trade.pair)} />
-            <Field label="RFQ Ref" value={trade.rfqRef || "—"} />
+            <Field label="Reference" value={trade.rfqRef || "—"} />
             <Field label="Created" value={formatTimestamp(Number(trade.createdAt))} />
             <Field label="Expires" value={formatTimestamp(Number(trade.expiresAt))} />
             <Field label="Maker" value={trade.maker} mono />

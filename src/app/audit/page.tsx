@@ -10,7 +10,7 @@ export default function AuditPage() {
         </div>
         <h1 className="text-2xl font-semibold text-white mb-2">Audit Panel</h1>
         <p className="text-sm text-arc-muted leading-relaxed">
-          Trade amounts and firm details are encrypted and stored onchain. To read them,
+          Trade amounts and firm details are encrypted. To read them,
           you need a view key — a short code the trading parties share with their auditor.
           Everything decrypts locally in your browser; nothing is sent to a server.
         </p>
@@ -22,22 +22,22 @@ export default function AuditPage() {
           <li className="flex gap-2.5">
             <span className="text-umbra-glow font-mono shrink-0">1.</span>
             <span>
-              When a quote is created, a unique view key is generated. Only its fingerprint
-              is stored onchain — the key itself stays with the trading parties.
+              When a quote is created, a unique view key is generated. A reference to it
+              is recorded on the blockchain — the key itself stays with the trading parties.
             </span>
           </li>
           <li className="flex gap-2.5">
             <span className="text-umbra-glow font-mono shrink-0">2.</span>
             <span>
               The trade details — firm name, amount, reference — are encrypted with that
-              key and stored onchain as an unreadable blob.
+              key and stored on the blockchain in an unreadable form.
             </span>
           </li>
           <li className="flex gap-2.5">
             <span className="text-umbra-glow font-mono shrink-0">3.</span>
             <span>
               The trading parties share the view key with you out of band. Paste it here
-              and the panel checks it matches the fingerprint on record, then decrypts the details.
+              and the panel verifies the key matches the trade on record, then decrypts the details.
             </span>
           </li>
         </ol>
